@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Chart Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Seating Chart Application Test</h1>
+    
+    <div class="test-section">
+        <h3>Application Status</h3>
+        <div id="appStatus">Checking...</div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test Functions</h3>
+        <button onclick="testSampleData()">Load Sample Data</button>
+        <button onclick="testClearData()">Clear All Data</button>
+        <button onclick="testEmployeeCount()">Check Employee Count</button>
+        <button onclick="testLocalStorage()">Test Local Storage</button>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test Results</h3>
+        <div id="testResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Open Main Application</h3>
+        <a href="index.html" target="_blank">
+            <button>Open Seating Chart</button>
+        </a>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const results = document.getElementById('testResults');
+            const div = document.createElement('div');
+            div.className = type;
+            div.textContent = `${new Date().toLocaleTimeString()}: ${message}`;
+            results.appendChild(div);
+        }
+
+        function testSampleData() {
+            try {
+                if (window.seatingChart) {
+                    window.seatingChart.addSampleData();
+                    log('Sample data loaded successfully', 'success');
+                } else {
+                    log('Seating chart object not found - application may not be loaded', 'error');
+                }
+            } catch (error) {
+                log(`Error loading sample data: ${error.message}`, 'error');
+            }
+        }
+
+        function testClearData() {
+            try {
+                if (window.seatingChart) {
+                    window.seatingChart.clearAllData();
+                    log('Data cleared successfully', 'success');
+                } else {
+                    log('Seating chart object not found', 'error');
+                }
+            } catch (error) {
+                log(`Error clearing data: ${error.message}`, 'error');
+            }
+        }
+
+        function testEmployeeCount() {
+            try {
+                if (window.seatingChart) {
+                    const employees = window.seatingChart.employees();
+                    log(`Current employee count: ${employees.length}`, 'success');
+                } else {
+                    log('Seating chart object not found', 'error');
+                }
+            } catch (error) {
+                log(`Error checking employee count: ${error.message}`, 'error');
+            }
+        }
+
+        function testLocalStorage() {
+            try {
+                const testKey = 'seatingChart_test';
+                const testValue = 'test_value_' + Date.now();
+                
+                localStorage.setItem(testKey, testValue);
+                const retrieved = localStorage.getItem(testKey);
+                localStorage.removeItem(testKey);
+                
+                if (retrieved === testValue) {
+                    log('Local storage working correctly', 'success');
+                } else {
+                    log('Local storage test failed', 'error');
+                }
+            } catch (error) {
+                log(`Local storage error: ${error.message}`, 'error');
+            }
+        }
+
+        // Check application status on load
+        window.addEventListener('load', function() {
+            const statusDiv = document.getElementById('appStatus');
+            
+            // Check if main app files exist
+            fetch('index.html')
+                .then(response => {
+                    if (response.ok) {
+                        statusDiv.innerHTML = '<span style="color: green;">✓ Main application files found</span>';
+                        log('Application files loaded successfully', 'success');
+                    } else {
+                        statusDiv.innerHTML = '<span style="color: red;">✗ Main application files not found</span>';
+                        log('Application files not found', 'error');
+                    }
+                })
+                .catch(error => {
+                    statusDiv.innerHTML = '<span style="color: red;">✗ Error loading application</span>';
+                    log(`Error: ${error.message}`, 'error');
+                });
+        });
+    </script>
+</body>
+</html>

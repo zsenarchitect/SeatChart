@@ -1,5 +1,7 @@
 # Seating Chart Check-In
 
+🌐 **Live Website**: [https://szhang.github.io/SeatChart](https://szhang.github.io/SeatChart)
+
 A modern, responsive web application for managing daily seating chart check-ins. Built with vanilla HTML, CSS, and JavaScript, this application allows anyone with the link to view and update seating assignments with real-time status indicators.
 
 ## Features

@@ -1,0 +1,4 @@
+/* weird outline without this */
+.MuiList-root{
+  outline: none;
+}

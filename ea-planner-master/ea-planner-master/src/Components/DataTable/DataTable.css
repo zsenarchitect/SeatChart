@@ -1,0 +1,48 @@
+.table-pane{
+  /* width:35vw; */
+  height:98vh;
+  /* min-width: 490px; */
+  /* max-width: 600px; */
+  /* box-sizing: border-box; */
+  /* padding-top: 2vh; */
+  margin: 1vh;
+  /* overflow-x: hidden; */
+}
+
+.table-link{
+  color: #212121;
+  text-decoration: none;
+}
+
+.table-link:link:hover{
+  font-style: italic;
+  color: #00796b;
+}
+
+.table-link:visited:hover{
+  font-style: italic;
+  color: #00796b;
+}
+
+.MuiChip-labelSmall{
+  font-size: 0.7rem;
+  padding: 0px;
+}
+/* .dept-chip{
+  font-size: 0.25em;
+} */
+
+.dept-chip:hover{
+  box-shadow: 7px 5px 10px -5px #212121;
+  cursor: pointer;
+}
+
+.comment{
+  font-style: italic;
+  font-size: 0.75rem;
+  font-weight: 100;
+}
+
+/* .MuiFab-secondary:hover {
+  background-color: #d13849 !important;
+} */

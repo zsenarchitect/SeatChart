@@ -2,46 +2,110 @@
 let employees = [];
 let floorAreas = [];
 let selectedDate = new Date().toISOString().split('T')[0];
+let dailyCheckins = {}; // Store daily check-in data
+let employeeHistory = {}; // Store employee history and basic info
+let currentLocation = 'nyc'; // Default location
 
-// Sample floor plan data (based on the reference screenshot)
+// Floor plan data for different locations
 const floorPlanData = {
-    areas: [
-        { name: 'Barclay', capacity: 18, x: 10, y: 5, width: 200, height: 120 },
-        { name: 'Hudson', capacity: 26, x: 10, y: 140, width: 180, height: 150 },
-        { name: 'Jersey', capacity: 14, x: 10, y: 300, width: 160, height: 100 },
-        { name: 'Empire', capacity: 6, x: 220, y: 80, width: 120, height: 80 },
-        { name: 'Training Area', capacity: 20, x: 10, y: 420, width: 200, height: 120 },
-        { name: 'Ellis', capacity: 10, x: 10, y: 560, width: 140, height: 80 },
-        { name: 'Liberty', capacity: 6, x: 220, y: 180, width: 100, height: 60 },
-        { name: 'Manahata', capacity: 8, x: 360, y: 40, width: 120, height: 80 },
-        { name: 'Woolworth', capacity: 8, x: 360, y: 140, width: 120, height: 80 },
-        { name: 'St. Paul', capacity: 6, x: 360, y: 240, width: 100, height: 60 },
-        { name: 'Roebling', capacity: 8, x: 360, y: 320, width: 120, height: 80 },
-        { name: 'Governors', capacity: 8, x: 360, y: 420, width: 120, height: 80 }
+    nyc: {
+        areas: [
+            { name: 'Barclay', capacity: 18, x: 10, y: 5, width: 200, height: 120 },
+            { name: 'Hudson', capacity: 26, x: 10, y: 140, width: 180, height: 150 },
+            { name: 'Jersey', capacity: 14, x: 10, y: 300, width: 160, height: 100 },
+            { name: 'Empire', capacity: 6, x: 220, y: 80, width: 120, height: 80 },
+            { name: 'Training Area', capacity: 20, x: 10, y: 420, width: 200, height: 120 },
+            { name: 'Ellis', capacity: 10, x: 10, y: 560, width: 140, height: 80 },
+            { name: 'Liberty', capacity: 6, x: 220, y: 180, width: 100, height: 60 },
+            { name: 'Manahata', capacity: 8, x: 360, y: 40, width: 120, height: 80 },
+            { name: 'Woolworth', capacity: 8, x: 360, y: 140, width: 120, height: 80 },
+            { name: 'St. Paul', capacity: 6, x: 360, y: 240, width: 100, height: 60 },
+            { name: 'Roebling', capacity: 8, x: 360, y: 320, width: 120, height: 80 },
+            { name: 'Governors', capacity: 8, x: 360, y: 420, width: 120, height: 80 }
+        ]
+    },
+    la: {
+        areas: [
+            { name: 'Hollywood', capacity: 15, x: 10, y: 5, width: 180, height: 100 },
+            { name: 'Venice', capacity: 20, x: 10, y: 120, width: 200, height: 120 },
+            { name: 'Santa Monica', capacity: 12, x: 10, y: 260, width: 160, height: 90 },
+            { name: 'Beverly Hills', capacity: 8, x: 220, y: 60, width: 120, height: 80 },
+            { name: 'Downtown', capacity: 16, x: 10, y: 370, width: 180, height: 110 },
+            { name: 'Westside', capacity: 10, x: 220, y: 160, width: 140, height: 80 },
+            { name: 'Pasadena', capacity: 6, x: 220, y: 260, width: 100, height: 60 },
+            { name: 'Malibu', capacity: 4, x: 360, y: 40, width: 100, height: 60 },
+            { name: 'Culver City', capacity: 8, x: 360, y: 120, width: 120, height: 80 },
+            { name: 'Glendale', capacity: 6, x: 360, y: 220, width: 100, height: 60 },
+            { name: 'Burbank', capacity: 8, x: 360, y: 300, width: 120, height: 80 },
+            { name: 'Studio City', capacity: 6, x: 360, y: 400, width: 100, height: 60 }
+        ]
+    },
+    shanghai: {
+        areas: [
+            { name: 'Pudong', capacity: 25, x: 10, y: 5, width: 220, height: 140 },
+            { name: 'Puxi', capacity: 20, x: 10, y: 160, width: 200, height: 120 },
+            { name: 'Lujiazui', capacity: 15, x: 10, y: 300, width: 180, height: 100 },
+            { name: 'Xintiandi', capacity: 10, x: 240, y: 80, width: 140, height: 80 },
+            { name: 'Jing\'an', capacity: 12, x: 10, y: 420, width: 160, height: 90 },
+            { name: 'Huangpu', capacity: 8, x: 240, y: 180, width: 120, height: 70 },
+            { name: 'Hongkou', capacity: 6, x: 240, y: 270, width: 100, height: 60 },
+            { name: 'Yangpu', capacity: 8, x: 400, y: 40, width: 120, height: 80 },
+            { name: 'Changning', capacity: 10, x: 400, y: 140, width: 140, height: 80 },
+            { name: 'Putuo', capacity: 6, x: 400, y: 240, width: 100, height: 60 },
+            { name: 'Minhang', capacity: 8, x: 400, y: 320, width: 120, height: 80 },
+            { name: 'Songjiang', capacity: 4, x: 400, y: 420, width: 80, height: 50 }
+        ]
+    }
+};
+
+// Employee lists for different locations
+const employeeLists = {
+    nyc: [
+        { name: 'Stefan Abel', email: 'stefan.abel@company.com', dept: 'Technica', seat: 'BA01' },
+        { name: 'Jlees Ahmed', email: 'jlees.ahmed@company.com', dept: 'Engineering', seat: 'HU02' },
+        { name: 'Kristen Alexander', email: 'kristen.alexander@company.com', dept: 'Technica', seat: 'JE03' },
+        { name: 'Yumeng An', email: 'yumeng.an@company.com', dept: 'Technica', seat: 'EM04' },
+        { name: 'Gary Anderson', email: 'gary.anderson@company.com', dept: 'Technica', seat: 'TR05' },
+        { name: 'David Appel', email: 'david.appel@company.com', dept: 'Marketing', seat: 'EL06' },
+        { name: 'Elizabeth Austin', email: 'elizabeth.austin@company.com', dept: 'Technica', seat: 'LI07' },
+        { name: 'Michael Baker', email: 'michael.baker@company.com', dept: 'HR', seat: 'MA08' },
+        { name: 'Sarah Chen', email: 'sarah.chen@company.com', dept: 'Finance', seat: 'WO09' },
+        { name: 'John Davis', email: 'john.davis@company.com', dept: 'Engineering', seat: 'SP10' },
+        { name: 'Lisa Evans', email: 'lisa.evans@company.com', dept: 'Training', seat: 'RO11' },
+        { name: 'Frank Garcia', email: 'frank.garcia@company.com', dept: 'Legal', seat: 'GV12' }
+    ],
+    la: [
+        { name: 'Alex Rodriguez', email: 'alex.rodriguez@company.com', dept: 'Engineering', seat: 'HO01' },
+        { name: 'Emma Wilson', email: 'emma.wilson@company.com', dept: 'Design', seat: 'VE02' },
+        { name: 'James Brown', email: 'james.brown@company.com', dept: 'Marketing', seat: 'SM03' },
+        { name: 'Sophie Davis', email: 'sophie.davis@company.com', dept: 'Product', seat: 'BH04' },
+        { name: 'Michael Chen', email: 'michael.chen@company.com', dept: 'Engineering', seat: 'DT05' },
+        { name: 'Olivia Taylor', email: 'olivia.taylor@company.com', dept: 'Sales', seat: 'WS06' },
+        { name: 'David Kim', email: 'david.kim@company.com', dept: 'Finance', seat: 'PA07' },
+        { name: 'Isabella Lee', email: 'isabella.lee@company.com', dept: 'HR', seat: 'MA08' },
+        { name: 'Christopher Wang', email: 'christopher.wang@company.com', dept: 'Engineering', seat: 'CC09' },
+        { name: 'Ava Johnson', email: 'ava.johnson@company.com', dept: 'Design', seat: 'GL10' },
+        { name: 'Daniel Smith', email: 'daniel.smith@company.com', dept: 'Marketing', seat: 'BU11' },
+        { name: 'Mia Garcia', email: 'mia.garcia@company.com', dept: 'Product', seat: 'SC12' }
+    ],
+    shanghai: [
+        { name: 'Li Wei', email: 'li.wei@company.com', dept: 'Engineering', seat: 'PD01' },
+        { name: 'Zhang Ming', email: 'zhang.ming@company.com', dept: 'Design', seat: 'PX02' },
+        { name: 'Wang Fang', email: 'wang.fang@company.com', dept: 'Marketing', seat: 'LJ03' },
+        { name: 'Chen Hao', email: 'chen.hao@company.com', dept: 'Product', seat: 'XT04' },
+        { name: 'Liu Yan', email: 'liu.yan@company.com', dept: 'Engineering', seat: 'JA05' },
+        { name: 'Yang Jun', email: 'yang.jun@company.com', dept: 'Sales', seat: 'HP06' },
+        { name: 'Zhao Lei', email: 'zhao.lei@company.com', dept: 'Finance', seat: 'HK07' },
+        { name: 'Wu Xia', email: 'wu.xia@company.com', dept: 'HR', seat: 'YP08' },
+        { name: 'Sun Jing', email: 'sun.jing@company.com', dept: 'Engineering', seat: 'CN09' },
+        { name: 'Ma Lin', email: 'ma.lin@company.com', dept: 'Design', seat: 'PT10' },
+        { name: 'Huang Wei', email: 'huang.wei@company.com', dept: 'Marketing', seat: 'MH11' },
+        { name: 'Zhou Min', email: 'zhou.min@company.com', dept: 'Product', seat: 'SJ12' }
     ]
 };
 
-// Employee list for daily check-ins
-const employeeList = [
-    { name: 'Stefan Abel', email: 'stefan.abel@company.com', dept: 'Technica' },
-    { name: 'Jlees Ahmed', email: 'jlees.ahmed@company.com', dept: 'Engineering' },
-    { name: 'Kristen Alexander', email: 'kristen.alexander@company.com', dept: 'Technica' },
-    { name: 'Yumeng An', email: 'yumeng.an@company.com', dept: 'Technica' },
-    { name: 'Gary Anderson', email: 'gary.anderson@company.com', dept: 'Technica' },
-    { name: 'David Appel', email: 'david.appel@company.com', dept: 'Marketing' },
-    { name: 'Elizabeth Austin', email: 'elizabeth.austin@company.com', dept: 'Technica' },
-    { name: 'Michael Baker', email: 'michael.baker@company.com', dept: 'HR' },
-    { name: 'Sarah Chen', email: 'sarah.chen@company.com', dept: 'Finance' },
-    { name: 'John Davis', email: 'john.davis@company.com', dept: 'Engineering' },
-    { name: 'Lisa Evans', email: 'lisa.evans@company.com', dept: 'Training' },
-    { name: 'Frank Garcia', email: 'frank.garcia@company.com', dept: 'Legal' },
-    { name: 'Maria Hernandez', email: 'maria.hernandez@company.com', dept: 'Operations' },
-    { name: 'Robert Johnson', email: 'robert.johnson@company.com', dept: 'Sales' },
-    { name: 'Jennifer Kim', email: 'jennifer.kim@company.com', dept: 'Marketing' },
-    { name: 'Kevin Lee', email: 'kevin.lee@company.com', dept: 'Engineering' },
-    { name: 'Amanda Lopez', email: 'amanda.lopez@company.com', dept: 'Design' },
-    { name: 'Thomas Moore', email: 'thomas.moore@company.com', dept: 'Product' }
-];
+// Employee list for daily check-ins (current location)
+const employeeList = employeeLists[currentLocation] || employeeLists.nyc;
 
 // Sample employee data (for backward compatibility)
 const sampleEmployees = employeeList.map(emp => ({
@@ -82,14 +146,25 @@ function initializeApp() {
 
 // Data management
 function loadData() {
-    const savedEmployees = localStorage.getItem('seatingChart_employees');
+    const savedEmployees = localStorage.getItem(`seatingChart_employees_${currentLocation}`);
     const savedDate = localStorage.getItem('seatingChart_date');
+    const savedDailyCheckins = localStorage.getItem(`seatingChart_dailyCheckins_${currentLocation}`);
+    const savedEmployeeHistory = localStorage.getItem(`seatingChart_employeeHistory_${currentLocation}`);
     
     if (savedEmployees) {
         employees = JSON.parse(savedEmployees);
     } else {
-        employees = [...sampleEmployees];
+        // Initialize with current location's employee list
+        employees = employeeLists[currentLocation] || employeeLists.nyc;
         saveData();
+    }
+    
+    if (savedDailyCheckins) {
+        dailyCheckins = JSON.parse(savedDailyCheckins);
+    }
+    
+    if (savedEmployeeHistory) {
+        employeeHistory = JSON.parse(savedEmployeeHistory);
     }
     
     if (savedDate) {
@@ -99,8 +174,10 @@ function loadData() {
 }
 
 function saveData() {
-    localStorage.setItem('seatingChart_employees', JSON.stringify(employees));
+    localStorage.setItem(`seatingChart_employees_${currentLocation}`, JSON.stringify(employees));
     localStorage.setItem('seatingChart_date', selectedDate);
+    localStorage.setItem(`seatingChart_dailyCheckins_${currentLocation}`, JSON.stringify(dailyCheckins));
+    localStorage.setItem(`seatingChart_employeeHistory_${currentLocation}`, JSON.stringify(employeeHistory));
     updateLastUpdated();
 }
 
@@ -126,7 +203,13 @@ function renderFloorPlan() {
     
     floorPlan.innerHTML = '';
     
-    floorPlanData.areas.forEach(area => {
+    const currentFloorPlan = floorPlanData[currentLocation];
+    if (!currentFloorPlan) {
+        console.error('Floor plan not found for location:', currentLocation);
+        return;
+    }
+    
+    currentFloorPlan.areas.forEach(area => {
         const areaElement = createFloorArea(area);
         floorPlan.appendChild(areaElement);
         
@@ -180,12 +263,28 @@ function createSeat(area, seatNumber) {
     const employee = employees.find(emp => emp.seat === seatId);
     if (employee) {
         seatElement.classList.add('occupied');
+        
+        // Check if employee has checked in today
+        const todayKey = selectedDate;
+        const hasCheckedIn = dailyCheckins[todayKey] && 
+                           dailyCheckins[todayKey].some(checkin => checkin.employeeName === employee.name);
+        
+        // Add status dot
         const statusDot = document.createElement('div');
         statusDot.className = `status-dot ${employee.status}`;
         seatElement.appendChild(statusDot);
         
+        // Add check-in indicator if they've checked in today
+        if (hasCheckedIn) {
+            const checkinIndicator = document.createElement('div');
+            checkinIndicator.className = 'checkin-indicator';
+            checkinIndicator.innerHTML = '✓';
+            seatElement.appendChild(checkinIndicator);
+        }
+        
         // Add tooltip
-        seatElement.title = `${employee.name} - ${statusOptions[employee.status].label}`;
+        const checkinStatus = hasCheckedIn ? ' (Checked in today)' : ' (Not checked in today)';
+        seatElement.title = `${employee.name} - ${statusOptions[employee.status].label}${checkinStatus}`;
     }
     
     seatElement.addEventListener('click', () => handleSeatClick(seatId));
@@ -413,7 +512,13 @@ function handleDateChange() {
 
 function handleLocationChange() {
     const location = document.getElementById('locationSelect').value;
-    // In a real application, you would load data for the selected location
+    currentLocation = location;
+    
+    // Reload data for the new location
+    loadData();
+    renderFloorPlan();
+    renderEmployeeTable();
+    
     console.log('Location changed to:', location);
 }
 
@@ -443,10 +548,57 @@ function clearAllData() {
     }
 }
 
+// Daily check-in functions
+function recordDailyCheckin(employeeName, status) {
+    const todayKey = selectedDate;
+    
+    if (!dailyCheckins[todayKey]) {
+        dailyCheckins[todayKey] = [];
+    }
+    
+    // Check if already checked in today
+    const existingCheckin = dailyCheckins[todayKey].find(checkin => checkin.employeeName === employeeName);
+    if (existingCheckin) {
+        // Update existing check-in
+        existingCheckin.status = status;
+        existingCheckin.checkinTime = new Date().toISOString();
+    } else {
+        // Add new check-in
+        dailyCheckins[todayKey].push({
+            employeeName,
+            status,
+            checkinTime: new Date().toISOString(),
+            location: currentLocation
+        });
+    }
+    
+    // Update employee history
+    if (!employeeHistory[employeeName]) {
+        employeeHistory[employeeName] = {
+            name: employeeName,
+            checkins: []
+        };
+    }
+    
+    // Add to history
+    employeeHistory[employeeName].checkins.push({
+        date: todayKey,
+        status,
+        checkinTime: new Date().toISOString(),
+        location: currentLocation
+    });
+    
+    saveData();
+    renderFloorPlan(); // Refresh the floor plan to show check-in status
+}
+
 // Export functions for debugging
 window.seatingChart = {
     addSampleData,
     clearAllData,
     employees: () => employees,
-    saveData
+    saveData,
+    recordDailyCheckin,
+    dailyCheckins: () => dailyCheckins,
+    employeeHistory: () => employeeHistory
 };

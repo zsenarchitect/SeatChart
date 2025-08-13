@@ -283,6 +283,25 @@ body {
     background: #ef4444;
 }
 
+/* Check-in Indicator */
+.checkin-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    width: 12px;
+    height: 12px;
+    background: #10b981;
+    border-radius: 50%;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 /* Employee Section */
 .employee-section {
     background: white;

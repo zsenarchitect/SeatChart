@@ -48,26 +48,7 @@ const floorPlanData = {
             WB01: { x: 0.110189, y: 0.225521 }, WB02: { x: 0.084365, y: 0.225521 }, WB03: { x: 0.060779, y: 0.225521 }, WB04: { x: 0.036379, y: 0.225521 },
             WB05: { x: 0.036379, y: 0.262690 }, WB06: { x: 0.060779, y: 0.262690 }, WB07: { x: 0.084365, y: 0.262690 }, WB08: { x: 0.110189, y: 0.262690 },
             WA01: { x: 0.110189, y: 0.151443 }, WA02: { x: 0.084365, y: 0.151443 }, WA03: { x: 0.060779, y: 0.151443 }, WA04: { x: 0.036379, y: 0.151443 },
-            WA05: { x: 0.036379, y: 0.189522 }, WA06: { x: 0.060779, y: 0.189522 }, WA07: { x: 0.084365, y: 0.189522 }, WA08: { x: 0.110189, y: 0.189522 },
-            
-            // Conference rooms and special areas
-            N100: { x: 0.276082, y: 0.895384 }, N100B: { x: 0.254542, y: 0.895456 },
-            N103: { x: 0.372509, y: 0.813388 }, N104: { x: 0.421898, y: 0.799218 }, N105: { x: 0.470698, y: 0.799218 },
-            N107A: { x: 0.591679, y: 0.808516 }, N107B: { x: 0.653170, y: 0.808516 },
-            N108A: { x: 0.680000, y: 0.795 }, N108B: { x: 0.680000, y: 0.815516 }, N109: { x: 0.740351, y: 0.801587 },
-            S103: { x: 0.763332, y: 0.200109 }, S104: { x: 0.714532, y: 0.200109 }, S105A: { x: 0.677128, y: 0.192068 }, S105B: { x: 0.615637, y: 0.192068 },
-            S106: { x: 0.568125, y: 0.200109 }, S108: { x: 0.446132, y: 0.200109 }, S109: { x: 0.371647, y: 0.209000 }, S109B: { x: 0.4000, y: 0.209000 },
-            E100: { x: 0.877410, y: 0.677246 }, E103A: { x: 0.859761, y: 0.575007 }, E103B: { x: 0.877410, y: 0.555246 },
-            E105: { x: 0.877410, y: 0.445048 }, E106A: { x: 0.860127, y: 0.404459 }, E106B: { x: 0.877410, y: 0.384560 },
-            E108A: { x: 0.877410, y: 0.251835 }, E108B: { x: 0.830000, y: 0.270000 }, E108C: { x: 0.85500, y: 0.340000 }, E108D: { x: 0.830000, y: 0.290000 },
-            E109A: { x: 0.813515, y: 0.187255 }, E109B: { x: 0.834049, y: 0.187255 }, E109C: { x: 0.855223, y: 0.187255 }, E109D: { x: 0.876396, y: 0.187255 },
-            E110: { x: 0.970629, y: 0.185885 },
-            W110A: { x: 0.192969, y: 0.617279 }, W110B: { x: 0.214142, y: 0.617279 },
-            W116A: { x: 0.249879, y: 0.810083 }, W116B: { x: 0.264926, y: 0.810083 }, W116C: { x: 0.234832, y: 0.810083 },
-            WE01: { x: 0.174235, y: 0.393240 }, WE02: { x: 0.193755, y: 0.393240 },
-            WE03: { x: 0.214886, y: 0.382588 }, WE04: { x: 0.214886, y: 0.365915 }, WE05: { x: 0.214886, y: 0.350868 }, WE06: { x: 0.214886, y: 0.335415 },
-            WE07: { x: 0.214886, y: 0.318335 }, WE08: { x: 0.214886, y: 0.300848 }, WE09: { x: 0.193755, y: 0.288162 }, WE10: { x: 0.174235, y: 0.288162 },
-            WE11: { x: 0.169190, y: 0.362361 }, WE12: { x: 0.169190, y: 0.318228 }, WE13: { x: 0.168681, y: 0.332161 }, WE14: { x: 0.168681, y: 0.347615 }
+            WA05: { x: 0.036379, y: 0.189522 }, WA06: { x: 0.060779, y: 0.189522 }, WA07: { x: 0.084365, y: 0.189522 }, WA08: { x: 0.110189, y: 0.189522 }
         },
         // Conference room areas
         areas: [
@@ -84,12 +65,6 @@ const floorPlanData = {
                 x: 0.067818, y: 0.399867, width: 0.14, height: 0.12
             },
             {
-                name: 'Jersey',
-                id: 'jersey',
-                capacity: 14,
-                x: 0.067818, y: 0.399867, width: 0.12, height: 0.08
-            },
-            {
                 name: 'Empire',
                 id: 'empire',
                 capacity: 6,
@@ -102,109 +77,37 @@ const floorPlanData = {
                 x: 0.21, y: 0.658690, width: 0.16, height: 0.10
             },
             {
-                name: 'Ellis',
-                id: 'ellis',
-                capacity: 10,
-                x: 0.224744, y: 0.809018, width: 0.10, height: 0.06
-            },
-            {
                 name: 'Liberty',
                 id: 'liberty',
                 capacity: 6,
                 x: 0.509828, y: 0.76, width: 0.08, height: 0.06
-            },
-            {
-                name: 'Manahata',
-                id: 'manahata',
-                capacity: 8,
-                x: 0.878606, y: 0.062612, width: 0.10, height: 0.06
-            },
-            {
-                name: 'Woolworth',
-                id: 'woolworth',
-                capacity: 8,
-                x: 0.938762, y: 0.121436, width: 0.10, height: 0.06
-            },
-            {
-                name: 'St. Paul',
-                id: 'st-paul',
-                capacity: 6,
-                x: 0.81, y: 0.376338, width: 0.08, height: 0.06
-            },
-            {
-                name: 'Roebling',
-                id: 'roebling',
-                capacity: 8,
-                x: 0.933531, y: 0.879606, width: 0.10, height: 0.06
-            },
-            {
-                name: 'Governors',
-                id: 'governors',
-                capacity: 8,
-                x: 0.875991, y: 0.941042, width: 0.10, height: 0.06
             }
         ]
     },
     la: {
         seats: {
-            // LA office seats (simplified structure)
             HO01: { x: 0.1, y: 0.1 }, HO02: { x: 0.15, y: 0.1 }, HO03: { x: 0.2, y: 0.1 }, HO04: { x: 0.25, y: 0.1 },
             VE01: { x: 0.1, y: 0.2 }, VE02: { x: 0.15, y: 0.2 }, VE03: { x: 0.2, y: 0.2 }, VE04: { x: 0.25, y: 0.2 },
             SM01: { x: 0.1, y: 0.3 }, SM02: { x: 0.15, y: 0.3 }, SM03: { x: 0.2, y: 0.3 }, SM04: { x: 0.25, y: 0.3 },
-            BH01: { x: 0.4, y: 0.1 }, BH02: { x: 0.45, y: 0.1 }, BH03: { x: 0.5, y: 0.1 }, BH04: { x: 0.55, y: 0.1 },
-            DT01: { x: 0.1, y: 0.5 }, DT02: { x: 0.15, y: 0.5 }, DT03: { x: 0.2, y: 0.5 }, DT04: { x: 0.25, y: 0.5 },
-            WS01: { x: 0.4, y: 0.3 }, WS02: { x: 0.45, y: 0.3 }, WS03: { x: 0.5, y: 0.3 }, WS04: { x: 0.55, y: 0.3 },
-            PA01: { x: 0.4, y: 0.4 }, PA02: { x: 0.45, y: 0.4 }, PA03: { x: 0.5, y: 0.4 }, PA04: { x: 0.55, y: 0.4 },
-            MA01: { x: 0.7, y: 0.1 }, MA02: { x: 0.75, y: 0.1 }, MA03: { x: 0.8, y: 0.1 }, MA04: { x: 0.85, y: 0.1 },
-            CC01: { x: 0.7, y: 0.2 }, CC02: { x: 0.75, y: 0.2 }, CC03: { x: 0.8, y: 0.2 }, CC04: { x: 0.85, y: 0.2 },
-            GL01: { x: 0.7, y: 0.3 }, GL02: { x: 0.75, y: 0.3 }, GL03: { x: 0.8, y: 0.3 }, GL04: { x: 0.85, y: 0.3 },
-            BU01: { x: 0.7, y: 0.4 }, BU02: { x: 0.75, y: 0.4 }, BU03: { x: 0.8, y: 0.4 }, BU04: { x: 0.85, y: 0.4 },
-            SC01: { x: 0.7, y: 0.5 }, SC02: { x: 0.75, y: 0.5 }, SC03: { x: 0.8, y: 0.5 }, SC04: { x: 0.85, y: 0.5 }
+            BH01: { x: 0.4, y: 0.1 }, BH02: { x: 0.45, y: 0.1 }, BH03: { x: 0.5, y: 0.1 }, BH04: { x: 0.55, y: 0.1 }
         },
         areas: [
             { name: 'Hollywood', capacity: 15, x: 0.1, y: 0.05, width: 0.2, height: 0.15 },
             { name: 'Venice', capacity: 20, x: 0.1, y: 0.25, width: 0.2, height: 0.15 },
             { name: 'Santa Monica', capacity: 12, x: 0.1, y: 0.45, width: 0.2, height: 0.12 },
-            { name: 'Beverly Hills', capacity: 8, x: 0.35, y: 0.05, width: 0.25, height: 0.12 },
-            { name: 'Downtown', capacity: 16, x: 0.05, y: 0.45, width: 0.3, height: 0.15 },
-            { name: 'Westside', capacity: 10, x: 0.35, y: 0.25, width: 0.25, height: 0.12 },
-            { name: 'Pasadena', capacity: 6, x: 0.35, y: 0.4, width: 0.25, height: 0.08 },
-            { name: 'Malibu', capacity: 4, x: 0.65, y: 0.05, width: 0.25, height: 0.08 },
-            { name: 'Culver City', capacity: 8, x: 0.65, y: 0.15, width: 0.25, height: 0.12 },
-            { name: 'Glendale', capacity: 6, x: 0.65, y: 0.3, width: 0.25, height: 0.08 },
-            { name: 'Burbank', capacity: 8, x: 0.65, y: 0.4, width: 0.25, height: 0.12 },
-            { name: 'Studio City', capacity: 6, x: 0.65, y: 0.55, width: 0.25, height: 0.08 }
+            { name: 'Beverly Hills', capacity: 8, x: 0.35, y: 0.05, width: 0.25, height: 0.12 }
         ]
     },
     shanghai: {
         seats: {
-            // Shanghai office seats (simplified structure)
             PD01: { x: 0.1, y: 0.1 }, PD02: { x: 0.15, y: 0.1 }, PD03: { x: 0.2, y: 0.1 }, PD04: { x: 0.25, y: 0.1 }, PD05: { x: 0.3, y: 0.1 },
             PX01: { x: 0.1, y: 0.2 }, PX02: { x: 0.15, y: 0.2 }, PX03: { x: 0.2, y: 0.2 }, PX04: { x: 0.25, y: 0.2 }, PX05: { x: 0.3, y: 0.2 },
-            LJ01: { x: 0.1, y: 0.3 }, LJ02: { x: 0.15, y: 0.3 }, LJ03: { x: 0.2, y: 0.3 }, LJ04: { x: 0.25, y: 0.3 }, LJ05: { x: 0.3, y: 0.3 },
-            XT01: { x: 0.4, y: 0.1 }, XT02: { x: 0.45, y: 0.1 }, XT03: { x: 0.5, y: 0.1 }, XT04: { x: 0.55, y: 0.1 }, XT05: { x: 0.6, y: 0.1 },
-            JA01: { x: 0.1, y: 0.5 }, JA02: { x: 0.15, y: 0.5 }, JA03: { x: 0.2, y: 0.5 }, JA04: { x: 0.25, y: 0.5 }, JA05: { x: 0.3, y: 0.5 },
-            HP01: { x: 0.4, y: 0.2 }, HP02: { x: 0.45, y: 0.2 }, HP03: { x: 0.5, y: 0.2 }, HP04: { x: 0.55, y: 0.2 }, HP05: { x: 0.6, y: 0.2 },
-            HK01: { x: 0.4, y: 0.3 }, HK02: { x: 0.45, y: 0.3 }, HK03: { x: 0.5, y: 0.3 }, HK04: { x: 0.55, y: 0.3 }, HK05: { x: 0.6, y: 0.3 },
-            YP01: { x: 0.7, y: 0.1 }, YP02: { x: 0.75, y: 0.1 }, YP03: { x: 0.8, y: 0.1 }, YP04: { x: 0.85, y: 0.1 }, YP05: { x: 0.9, y: 0.1 },
-            CN01: { x: 0.7, y: 0.2 }, CN02: { x: 0.75, y: 0.2 }, CN03: { x: 0.8, y: 0.2 }, CN04: { x: 0.85, y: 0.2 }, CN05: { x: 0.9, y: 0.2 },
-            PT01: { x: 0.7, y: 0.3 }, PT02: { x: 0.75, y: 0.3 }, PT03: { x: 0.8, y: 0.3 }, PT04: { x: 0.85, y: 0.3 }, PT05: { x: 0.9, y: 0.3 },
-            MH01: { x: 0.7, y: 0.4 }, MH02: { x: 0.75, y: 0.4 }, MH03: { x: 0.8, y: 0.4 }, MH04: { x: 0.85, y: 0.4 }, MH05: { x: 0.9, y: 0.4 },
-            SJ01: { x: 0.7, y: 0.5 }, SJ02: { x: 0.75, y: 0.5 }, SJ03: { x: 0.8, y: 0.5 }, SJ04: { x: 0.85, y: 0.5 }, SJ05: { x: 0.9, y: 0.5 }
+            LJ01: { x: 0.1, y: 0.3 }, LJ02: { x: 0.15, y: 0.3 }, LJ03: { x: 0.2, y: 0.3 }, LJ04: { x: 0.25, y: 0.3 }, LJ05: { x: 0.3, y: 0.3 }
         },
         areas: [
             { name: 'Pudong', capacity: 25, x: 0.05, y: 0.05, width: 0.35, height: 0.2 },
             { name: 'Puxi', capacity: 20, x: 0.05, y: 0.25, width: 0.35, height: 0.2 },
-            { name: 'Lujiazui', capacity: 15, x: 0.05, y: 0.45, width: 0.35, height: 0.15 },
-            { name: 'Xintiandi', capacity: 10, x: 0.35, y: 0.05, width: 0.3, height: 0.15 },
-            { name: 'Jing\'an', capacity: 12, x: 0.05, y: 0.65, width: 0.35, height: 0.15 },
-            { name: 'Huangpu', capacity: 8, x: 0.35, y: 0.25, width: 0.3, height: 0.12 },
-            { name: 'Hongkou', capacity: 6, x: 0.35, y: 0.4, width: 0.3, height: 0.08 },
-            { name: 'Yangpu', capacity: 8, x: 0.65, y: 0.05, width: 0.3, height: 0.12 },
-            { name: 'Changning', capacity: 10, x: 0.65, y: 0.2, width: 0.3, height: 0.15 },
-            { name: 'Putuo', capacity: 6, x: 0.65, y: 0.4, width: 0.3, height: 0.08 },
-            { name: 'Minhang', capacity: 8, x: 0.65, y: 0.55, width: 0.3, height: 0.12 },
-            { name: 'Songjiang', capacity: 4, x: 0.65, y: 0.7, width: 0.3, height: 0.08 }
+            { name: 'Lujiazui', capacity: 15, x: 0.05, y: 0.45, width: 0.35, height: 0.15 }
         ]
     }
 };
@@ -229,29 +132,14 @@ const employeeLists = {
         { name: 'Alex Rodriguez', email: 'alex.rodriguez@company.com', dept: 'Engineering', seat: 'HO01' },
         { name: 'Emma Wilson', email: 'emma.wilson@company.com', dept: 'Design', seat: 'VE02' },
         { name: 'James Brown', email: 'james.brown@company.com', dept: 'Marketing', seat: 'SM03' },
-        { name: 'Sophie Davis', email: 'sophie.davis@company.com', dept: 'Product', seat: 'BH04' },
-        { name: 'Michael Chen', email: 'michael.chen@company.com', dept: 'Engineering', seat: 'DT05' },
-        { name: 'Olivia Taylor', email: 'olivia.taylor@company.com', dept: 'Sales', seat: 'WS06' },
-        { name: 'David Kim', email: 'david.kim@company.com', dept: 'Finance', seat: 'PA07' },
-        { name: 'Isabella Lee', email: 'isabella.lee@company.com', dept: 'HR', seat: 'MA08' },
-        { name: 'Christopher Wang', email: 'christopher.wang@company.com', dept: 'Engineering', seat: 'CC09' },
-        { name: 'Ava Johnson', email: 'ava.johnson@company.com', dept: 'Design', seat: 'GL10' },
-        { name: 'Daniel Smith', email: 'daniel.smith@company.com', dept: 'Marketing', seat: 'BU11' },
-        { name: 'Mia Garcia', email: 'mia.garcia@company.com', dept: 'Product', seat: 'SC12' }
+        { name: 'Sophie Davis', email: 'sophie.davis@company.com', dept: 'Product', seat: 'BH04' }
     ],
     shanghai: [
         { name: 'Li Wei', email: 'li.wei@company.com', dept: 'Engineering', seat: 'PD01' },
         { name: 'Zhang Ming', email: 'zhang.ming@company.com', dept: 'Design', seat: 'PX02' },
         { name: 'Wang Fang', email: 'wang.fang@company.com', dept: 'Marketing', seat: 'LJ03' },
         { name: 'Chen Hao', email: 'chen.hao@company.com', dept: 'Product', seat: 'XT04' },
-        { name: 'Liu Yan', email: 'liu.yan@company.com', dept: 'Engineering', seat: 'JA05' },
-        { name: 'Yang Jun', email: 'yang.jun@company.com', dept: 'Sales', seat: 'HP06' },
-        { name: 'Zhao Lei', email: 'zhao.lei@company.com', dept: 'Finance', seat: 'HK07' },
-        { name: 'Wu Xia', email: 'wu.xia@company.com', dept: 'HR', seat: 'YP08' },
-        { name: 'Sun Jing', email: 'sun.jing@company.com', dept: 'Engineering', seat: 'CN09' },
-        { name: 'Ma Lin', email: 'ma.lin@company.com', dept: 'Design', seat: 'PT10' },
-        { name: 'Huang Wei', email: 'huang.wei@company.com', dept: 'Marketing', seat: 'MH11' },
-        { name: 'Zhou Min', email: 'zhou.min@company.com', dept: 'Product', seat: 'SJ12' }
+        { name: 'Liu Yan', email: 'liu.yan@company.com', dept: 'Engineering', seat: 'JA05' }
     ]
 };
 
@@ -284,6 +172,9 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Seating Chart App initialized successfully');
     } catch (error) {
         console.error('Error initializing app:', error);
+        if (window.errorTracker) {
+            window.errorTracker.logError('Application initialization failed', { error: error.message, stack: error.stack });
+        }
     }
 });
 
@@ -320,7 +211,10 @@ function loadData() {
     
     if (savedDate) {
         selectedDate = savedDate;
-        document.getElementById('datePicker').value = selectedDate;
+        const datePicker = document.getElementById('datePicker');
+        if (datePicker) {
+            datePicker.value = selectedDate;
+        }
     }
 }
 
@@ -335,12 +229,19 @@ function saveData() {
 function updateLastUpdated() {
     const now = new Date();
     const lastUpdatedBy = localStorage.getItem('seatingChart_lastUpdatedBy') || 'System';
-    document.getElementById('lastUpdatedBy').textContent = lastUpdatedBy;
-    document.getElementById('lastUpdatedDate').textContent = now.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
+    const lastUpdatedByElement = document.getElementById('lastUpdatedBy');
+    const lastUpdatedDateElement = document.getElementById('lastUpdatedDate');
+    
+    if (lastUpdatedByElement) {
+        lastUpdatedByElement.textContent = lastUpdatedBy;
+    }
+    if (lastUpdatedDateElement) {
+        lastUpdatedDateElement.textContent = now.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
 }
 
 // Floor plan rendering
@@ -458,77 +359,19 @@ function createSeatFromCoordinates(seatId, seatData) {
         
         // Add tooltip
         const checkinStatus = hasCheckedIn ? ' (Checked in today)' : ' (Not checked in today)';
-        seatElement.title = `${employee.name} - ${statusOptions[employee.status].label}${checkinStatus}`;
+        seatElement.title = `${employee.name} - ${statusOptions[employee.status]?.label || 'Unknown'}${checkinStatus}`;
     }
     
     seatElement.addEventListener('click', () => handleSeatClick(seatId));
     
     return seatElement;
-}
-
-function createSeat(area, seatNumber) {
-    const seatElement = document.createElement('div');
-    seatElement.className = 'seat';
-    
-    // Calculate seat position within the area
-    const seatsPerRow = 4;
-    const row = Math.floor((seatNumber - 1) / seatsPerRow);
-    const col = (seatNumber - 1) % seatsPerRow;
-    
-    const seatX = area.x + 10 + (col * 25);
-    const seatY = area.y + 25 + (row * 25);
-    
-    seatElement.style.left = seatX + 'px';
-    seatElement.style.top = seatY + 'px';
-    
-    // Generate seat ID
-    const seatId = generateSeatId(area.name, seatNumber);
-    seatElement.textContent = seatNumber;
-    seatElement.dataset.seatId = seatId;
-    
-    // Check if seat is occupied
-    const employee = employees.find(emp => emp.seat === seatId);
-    if (employee) {
-        seatElement.classList.add('occupied');
-        
-        // Check if employee has checked in today
-        const todayKey = selectedDate;
-        const hasCheckedIn = dailyCheckins[todayKey] && 
-                           dailyCheckins[todayKey].some(checkin => checkin.employeeName === employee.name);
-        
-        // Add status dot
-        const statusDot = document.createElement('div');
-        statusDot.className = `status-dot ${employee.status}`;
-        seatElement.appendChild(statusDot);
-        
-        // Add check-in indicator if they've checked in today
-        if (hasCheckedIn) {
-            const checkinIndicator = document.createElement('div');
-            checkinIndicator.className = 'checkin-indicator';
-            checkinIndicator.innerHTML = '✓';
-            seatElement.appendChild(checkinIndicator);
-        }
-        
-        // Add tooltip
-        const checkinStatus = hasCheckedIn ? ' (Checked in today)' : ' (Not checked in today)';
-        seatElement.title = `${employee.name} - ${statusOptions[employee.status].label}${checkinStatus}`;
-    }
-    
-    seatElement.addEventListener('click', () => handleSeatClick(seatId));
-    
-    return seatElement;
-}
-
-function generateSeatId(areaName, seatNumber) {
-    const areaCode = areaName.substring(0, 2).toUpperCase();
-    return `${areaCode}${seatNumber.toString().padStart(2, '0')}`;
 }
 
 function handleSeatClick(seatId) {
     const employee = employees.find(emp => emp.seat === seatId);
     if (employee) {
         // Show employee info or allow editing
-        alert(`Seat ${seatId} is occupied by ${employee.name} (${statusOptions[employee.status].label})`);
+        alert(`Seat ${seatId} is occupied by ${employee.name} (${statusOptions[employee.status]?.label || 'Unknown'})`);
     } else {
         // Allow assigning to this seat
         openCheckinModal(seatId);
@@ -538,6 +381,11 @@ function handleSeatClick(seatId) {
 // Employee table rendering
 function renderEmployeeTable() {
     const tableBody = document.getElementById('employeeTableBody');
+    if (!tableBody) {
+        console.error('Employee table body not found');
+        return;
+    }
+    
     tableBody.innerHTML = '';
     
     employees.forEach(employee => {
@@ -564,7 +412,7 @@ function createEmployeeRow(employee) {
         <td class="employee-dept">${employee.dept}</td>
         <td class="employee-status">
             <div class="status-dot ${employee.status}"></div>
-            ${statusOptions[employee.status].label}
+            ${statusOptions[employee.status]?.label || 'Unknown'}
         </td>
         <td class="employee-checkin">${checkinStatus}</td>
     `;
@@ -580,8 +428,12 @@ function setupEventListeners() {
     const searchInput = document.getElementById('searchInput');
     const clearSearch = document.getElementById('clearSearch');
     
-    searchInput.addEventListener('input', handleSearch);
-    clearSearch.addEventListener('click', clearSearchInput);
+    if (searchInput) {
+        searchInput.addEventListener('input', handleSearch);
+    }
+    if (clearSearch) {
+        clearSearch.addEventListener('click', clearSearchInput);
+    }
     
     // Check-in modal
     const checkinBtn = document.getElementById('checkinBtn');
@@ -590,43 +442,59 @@ function setupEventListeners() {
     const cancelCheckin = document.getElementById('cancelCheckin');
     const submitCheckin = document.getElementById('submitCheckin');
     
-    checkinBtn.addEventListener('click', () => openCheckinModal());
-    closeModal.addEventListener('click', closeCheckinModal);
-    cancelCheckin.addEventListener('click', closeCheckinModal);
-    submitCheckin.addEventListener('click', handleCheckinSubmit);
+    if (checkinBtn) {
+        checkinBtn.addEventListener('click', () => openCheckinModal());
+    }
+    if (closeModal) {
+        closeModal.addEventListener('click', closeCheckinModal);
+    }
+    if (cancelCheckin) {
+        cancelCheckin.addEventListener('click', closeCheckinModal);
+    }
+    if (submitCheckin) {
+        submitCheckin.addEventListener('click', handleCheckinSubmit);
+    }
     
     // Date picker
     const datePicker = document.getElementById('datePicker');
-    datePicker.addEventListener('change', handleDateChange);
+    if (datePicker) {
+        datePicker.addEventListener('change', handleDateChange);
+    }
     
     // Location selector
     const locationSelect = document.getElementById('locationSelect');
-    locationSelect.addEventListener('change', handleLocationChange);
+    if (locationSelect) {
+        locationSelect.addEventListener('change', handleLocationChange);
+    }
     
     // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeCheckinModal();
-        }
-    });
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeCheckinModal();
+            }
+        });
+    }
 }
 
 function handleSearch() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
     const clearSearch = document.getElementById('clearSearch');
     const tableBody = document.getElementById('employeeTableBody');
     
+    if (!tableBody) return;
+    
     if (searchTerm) {
-        clearSearch.style.display = 'block';
+        if (clearSearch) clearSearch.style.display = 'block';
     } else {
-        clearSearch.style.display = 'none';
+        if (clearSearch) clearSearch.style.display = 'none';
     }
     
     const rows = tableBody.querySelectorAll('tr');
     rows.forEach(row => {
-        const name = row.querySelector('.employee-name').textContent.toLowerCase();
-        const seat = row.querySelector('.employee-seat').textContent.toLowerCase();
-        const dept = row.querySelector('.employee-dept').textContent.toLowerCase();
+        const name = row.querySelector('.employee-name')?.textContent.toLowerCase() || '';
+        const seat = row.querySelector('.employee-seat')?.textContent.toLowerCase() || '';
+        const dept = row.querySelector('.employee-dept')?.textContent.toLowerCase() || '';
         
         if (name.includes(searchTerm) || seat.includes(searchTerm) || dept.includes(searchTerm)) {
             row.style.display = '';
@@ -637,8 +505,15 @@ function handleSearch() {
 }
 
 function clearSearchInput() {
-    document.getElementById('searchInput').value = '';
-    document.getElementById('clearSearch').style.display = 'none';
+    const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+    
+    if (searchInput) {
+        searchInput.value = '';
+    }
+    if (clearSearch) {
+        clearSearch.style.display = 'none';
+    }
     handleSearch();
 }
 
@@ -647,11 +522,22 @@ function openCheckinModal(seatId = null) {
     const modal = document.getElementById('checkinModal');
     const seatSelect = document.getElementById('employeeSeat');
     
+    if (!modal || !seatSelect) {
+        console.error('Modal or seat select not found');
+        return;
+    }
+    
     // Populate seat options
     seatSelect.innerHTML = '<option value="">Select a seat...</option>';
     
     // Get all seat IDs from the current floor plan data
-    const allSeatIds = Object.keys(floorPlanData[currentLocation].seats);
+    const currentFloorPlan = floorPlanData[currentLocation];
+    if (!currentFloorPlan) {
+        console.error('Floor plan not found for location:', currentLocation);
+        return;
+    }
+    
+    const allSeatIds = Object.keys(currentFloorPlan.seats);
 
     allSeatIds.forEach(seatId => {
         // Determine area name based on seat ID prefix
@@ -692,27 +578,36 @@ function openCheckinModal(seatId = null) {
     }
     
     // Clear form
-    document.getElementById('employeeName').value = '';
-    document.getElementById('employeeDept').value = '';
-    document.getElementById('employeeStatus').value = 'working-office';
+    const employeeName = document.getElementById('employeeName');
+    const employeeDept = document.getElementById('employeeDept');
+    const employeeStatus = document.getElementById('employeeStatus');
+    
+    if (employeeName) employeeName.value = '';
+    if (employeeDept) employeeDept.value = '';
+    if (employeeStatus) employeeStatus.value = 'working-office';
     
     modal.classList.add('show');
 }
 
 function closeCheckinModal() {
     const modal = document.getElementById('checkinModal');
-    modal.classList.remove('show');
+    if (modal) {
+        modal.classList.remove('show');
+    }
     
     // Reset editing state
     window.editingEmployee = null;
-    document.getElementById('submitCheckin').textContent = 'Submit';
+    const submitCheckin = document.getElementById('submitCheckin');
+    if (submitCheckin) {
+        submitCheckin.textContent = 'Submit';
+    }
 }
 
 function handleCheckinSubmit() {
-    const name = document.getElementById('employeeName').value.trim();
-    const seat = document.getElementById('employeeSeat').value;
-    const dept = document.getElementById('employeeDept').value.trim();
-    const status = document.getElementById('employeeStatus').value;
+    const name = document.getElementById('employeeName')?.value.trim() || '';
+    const seat = document.getElementById('employeeSeat')?.value || '';
+    const dept = document.getElementById('employeeDept')?.value.trim() || '';
+    const status = document.getElementById('employeeStatus')?.value || 'working-office';
     
     if (!name || !seat || !dept) {
         alert('Please fill in all required fields.');
@@ -727,7 +622,10 @@ function handleCheckinSubmit() {
             employees[index] = { name, seat, dept, status };
         }
         window.editingEmployee = null;
-        document.getElementById('submitCheckin').textContent = 'Submit';
+        const submitCheckin = document.getElementById('submitCheckin');
+        if (submitCheckin) {
+            submitCheckin.textContent = 'Submit';
+        }
     } else {
         // Check if seat is already occupied
         const existingEmployee = employees.find(emp => emp.seat === seat);
@@ -754,12 +652,15 @@ function handleCheckinSubmit() {
 function editEmployee(employee) {
     if (confirm(`Edit ${employee.name}?`)) {
         openCheckinModal(employee.seat);
-        document.getElementById('employeeName').value = employee.name;
-        document.getElementById('employeeDept').value = employee.dept;
-        document.getElementById('employeeStatus').value = employee.status;
+        const employeeName = document.getElementById('employeeName');
+        const employeeDept = document.getElementById('employeeDept');
+        const employeeStatus = document.getElementById('employeeStatus');
+        const submitCheckin = document.getElementById('submitCheckin');
         
-        // Change submit button text
-        document.getElementById('submitCheckin').textContent = 'Update';
+        if (employeeName) employeeName.value = employee.name;
+        if (employeeDept) employeeDept.value = employee.dept;
+        if (employeeStatus) employeeStatus.value = employee.status;
+        if (submitCheckin) submitCheckin.textContent = 'Update';
         
         // Store reference to employee being edited
         window.editingEmployee = employee;
@@ -767,22 +668,27 @@ function editEmployee(employee) {
 }
 
 function handleDateChange() {
-    selectedDate = document.getElementById('datePicker').value;
-    saveData();
-    // In a real application, you would load data for the selected date
-    console.log('Date changed to:', selectedDate);
+    const datePicker = document.getElementById('datePicker');
+    if (datePicker) {
+        selectedDate = datePicker.value;
+        saveData();
+        console.log('Date changed to:', selectedDate);
+    }
 }
 
 function handleLocationChange() {
-    const location = document.getElementById('locationSelect').value;
-    currentLocation = location;
-    
-    // Reload data for the new location
-    loadData();
-    renderFloorPlan();
-    renderEmployeeTable();
-    
-    console.log('Location changed to:', location);
+    const locationSelect = document.getElementById('locationSelect');
+    if (locationSelect) {
+        const location = locationSelect.value;
+        currentLocation = location;
+        
+        // Reload data for the new location
+        loadData();
+        renderFloorPlan();
+        renderEmployeeTable();
+        
+        console.log('Location changed to:', location);
+    }
 }
 
 // Utility functions

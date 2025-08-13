@@ -1,146 +1,145 @@
-# Seating Chart Check-In
+# SeatChart - Office Seating Management
 
 🌐 **Live Website**: [https://szhang.github.io/SeatChart](https://szhang.github.io/SeatChart)
 
-A modern, responsive web application for managing daily seating chart check-ins. Built with vanilla HTML, CSS, and JavaScript, this application allows anyone with the link to view and update seating assignments with real-time status indicators.
+A professional seating chart check-in system for office management. Track employee status and seating assignments in real-time across multiple office locations.
 
-## Features
+## 🚀 Quick Start
 
-### 🏢 Interactive Floor Plan
-- Visual representation of office areas with seating capacity
-- Color-coded status indicators for each seat
-- Click-to-interact seats for quick check-ins
-- Responsive design that works on all devices
+1. **View the system**: Visit [https://szhang.github.io/SeatChart](https://szhang.github.io/SeatChart)
+2. **Test locally**: Open `index.html` in your browser
+3. **Check errors**: Open browser console and type `seatChartErrors.stats()`
 
-### 👥 Employee Management
-- Searchable employee list with real-time filtering
-- Department and status tracking
-- Easy check-in/check-out functionality
-- Status legend with color coding
+## 📊 Google Sheets Integration
 
-### 📊 Status Tracking
-- **Working From the Office** (Blue)
-- **Working Remotely** (Gray)
-- **Traveling for Business** (Green)
-- **Out of Office** (Yellow)
-- **Not in / Scheduled** (White/Gray)
-- **Emergency Response Team In Office** (Red)
+### Setup Google Sheets for Employee Management:
 
-### 🔧 Modern Features
-- Local storage for data persistence
-- Responsive design for mobile and desktop
-- Real-time search functionality
-- Date and location selection
-- Last updated tracking
+1. **Create a Google Sheet**
+   - Go to [Google Sheets](https://sheets.google.com)
+   - Create a new spreadsheet
+   - Name the first sheet "Employees"
 
-## Quick Start
-
-### Option 1: GitHub Pages (Recommended)
-1. Fork this repository
-2. Go to Settings > Pages
-3. Select "Deploy from a branch"
-4. Choose "main" branch and "/ (root)" folder
-5. Your site will be available at `https://yourusername.github.io/SeatChart`
-
-### Option 2: Local Development
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/SeatChart.git
-   cd SeatChart
+2. **Set up the headers (Row 1)**
+   ```
+   Name | Email | Department | Seat | Location | Status | Start Date | Manager | Phone | Notes
    ```
 
-2. Open `index.html` in your web browser or serve with a local server:
-   ```bash
-   # Using Python
-   python -m http.server 8000
-   
-   # Using Node.js
-   npx serve .
-   
-   # Using PHP
-   php -S localhost:8000
-   ```
+3. **Get Google Sheets API Key**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project or select existing
+   - Enable Google Sheets API
+   - Create credentials (API Key)
+   - Copy the API key
 
-3. Visit `http://localhost:8000` in your browser
+4. **Configure in the App**
+   - Click "Google Sheets Setup" button
+   - Enter your API key and spreadsheet ID
+   - Test the connection
+   - Save configuration
 
-## Usage
+5. **Sync Data**
+   - Add employee data in Google Sheets
+   - Click "Sync with Sheets" to update the app
 
-### For Employees
-1. Click the "CHECK IN" button or click on an empty seat
-2. Fill in your name, select your seat, and choose your department
-3. Select your current status
-4. Click "Submit" to check in
+### Google Sheets Template:
+The app provides a template with sample data structure. Click "Create Template" in the setup modal for detailed instructions.
 
-### For Managers
-1. View the floor plan to see current occupancy
-2. Use the search function to find specific employees
-3. Click on employee names to edit their information
-4. Monitor status changes in real-time
+## 📋 Manager Guide - How to Update Employee Data
 
-### Features for Debugging
-Open the browser console and use these commands:
-- `seatingChart.addSampleData()` - Load sample data
-- `seatingChart.clearAllData()` - Clear all data
-- `seatingChart.employees()` - View current employee data
+### 1. **Add New Hire**
+**Option A: Using Google Sheets (Recommended)**
+- Click "Google Sheets Setup" button in the app
+- Configure your Google Sheets API key and spreadsheet ID
+- Add employee data directly in Google Sheets
+- Click "Sync with Sheets" to update the app
 
-## Customization
-
-### Adding New Areas
-Edit the `floorPlanData` object in `script.js`:
+**Option B: Manual Code Update**
+- Open `assets/js/app.js`
+- Find the `employeeLists` section
+- Add new employee to the appropriate office location:
 ```javascript
-const floorPlanData = {
-    areas: [
-        { name: 'Your Area', capacity: 10, x: 10, y: 10, width: 150, height: 100 },
-        // Add more areas...
-    ]
-};
+{ name: 'John Doe', email: 'john.doe@company.com', dept: 'Engineering', seat: 'SA06' }
 ```
 
-### Modifying Status Options
-Update the `statusOptions` object in `script.js`:
+### 2. **Move Employee to Different Seat**
+- Open `assets/js/app.js`
+- Find the employee in `employeeLists`
+- Update their `seat` property to the new seat ID (e.g., 'SB03')
+
+### 3. **Update Office Map**
+- Open `assets/js/app.js`
+- Find the `floorPlanData` section
+- Modify seat coordinates or add new areas:
 ```javascript
-const statusOptions = {
-    'your-status': { label: 'Your Status Label', color: '#your-color' },
-    // Add more statuses...
-};
+seats: {
+    NEW01: { x: 0.5, y: 0.5 }, // Add new seat
+    // ... existing seats
+}
 ```
 
-### Styling
-- Main styles are in `styles.css`
-- Color scheme can be modified in the CSS variables
-- Responsive breakpoints are defined for mobile optimization
+### 4. **Change Default Email Template**
+- Open `assets/js/app.js`
+- Find the email template in the notification system
+- Update the message format as needed
 
-## Browser Support
+### 5. **Add New Office Location**
+- Open `assets/js/app.js`
+- Add new location to `floorPlanData` and `employeeLists`
+- Update the location selector in `index.html`
 
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
+## 🔧 Error Tracking
 
-## Data Storage
+### View Errors Locally
+1. Open browser console (F12)
+2. Type: `seatChartErrors.stats()` - See error statistics
+3. Type: `seatChartErrors.export()` - Export all errors
+4. Type: `seatChartErrors.clear()` - Clear error history
 
-The application uses browser localStorage for data persistence. This means:
-- Data is stored locally in each user's browser
-- No server required
-- Data persists between sessions
-- Each user has their own data (not shared across devices)
+### Report Errors to GitHub
+1. Open `assets/js/error-tracker.js`
+2. Set `enabled: true` in the config section
+3. Add your GitHub token
+4. Critical errors will automatically create GitHub issues
 
-## Contributing
+## 📁 File Structure
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+```
+SeatChart/
+├── index.html              # Main application page
+├── assets/
+│   ├── css/
+│   │   └── main.css        # Styles
+│   ├── js/
+│   │   ├── app.js          # Main application logic
+│   │   └── error-tracker.js # Error tracking system
+│   └── images/             # Images and icons
+├── pages/                  # Additional pages (if needed)
+├── manifest.json           # PWA configuration
+└── README.md              # This file
+```
 
-## License
+## 🛠️ Development
 
-This project is open source and available under the [MIT License](LICENSE).
+### Local Testing
+```bash
+# Start local server
+python -m http.server 8000
+# Then visit http://localhost:8000
+```
 
-## Support
+### Error Monitoring
+- Errors are tracked automatically
+- Check browser console for real-time error info
+- Use `seatChartErrors` object for debugging
 
-For issues and feature requests, please create an issue in the GitHub repository.
+## 📞 Support
+
+For issues or questions:
+1. Check error logs: `seatChartErrors.stats()`
+2. Export error data: `seatChartErrors.export()`
+3. Create GitHub issue with error details
 
 ---
 
-Built with ❤️ using vanilla HTML, CSS, and JavaScript
+**Last Updated**: August 2025
+**Version**: 1.0.0
